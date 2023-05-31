@@ -1,0 +1,32 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: hello-word-config
+data:
+  APP_STAGE: DEV
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "hello-word"
+  namespace: default
+  labels:
+    app: "hello-word"
+spec:
+  containers:
+  - name: hello-word
+    image: "marcosmota287/helloword"
+    envFrom:
+      - configMapRef:
+          name: hello-word-config
+    resources:
+      limits:
+        cpu: 200m
+        memory: 500Mi
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    ports:
+    - containerPort:  3000
+      name:  http
+  restartPolicy: Always
