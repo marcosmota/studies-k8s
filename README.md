@@ -49,6 +49,7 @@ NetworkPolicies
 applications via services
 - Use Ingress rules to expose applications
 
+## Materials for Studies
 I use the following material for studies:
 
 
